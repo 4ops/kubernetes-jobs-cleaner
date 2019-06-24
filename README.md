@@ -1,5 +1,7 @@
 # Jobs cleaner
 
+[![](https://images.microbadger.com/badges/image/4ops/jobs-cleaner.svg)](https://hub.docker.com/r/4ops/jobs-cleaner)
+
 ## Description
 
 Remove all jobs in given namespaces. May be used as Pod/Job/CronJob in cluster or directly from linux console with bash. Required ServiceAccount with namespaces/get and jobs/delete (see RBAC examples). Use environment variables or arguments for configuration.
