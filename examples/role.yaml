@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: jobs-cleaner
+  namespace: production
+rules:
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - pods
+  verbs:
+  - get
+  - list
+  - delete

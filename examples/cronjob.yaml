@@ -1,0 +1,25 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    k8s-app: jobs-cleaner
+  name: jobs-cleaner
+  namespace: production
+spec:
+  schedule: "0 6 * * *" # Run daily at 6:00 AM (UTC)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: jobs-cleaner
+          restartPolicy: Never
+          containers:
+          - name: jobs-cleaner
+            image: 4ops/jobs-cleaner:latest
+            args:
+            - --verbose
+            env:
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
